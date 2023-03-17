@@ -1,4 +1,4 @@
-<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger" *ngIf="!!user">
   <div class="container-fluid">
     <p class="navbar-brand mt-3">Hello {{ this.user }}, </p>
     <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
@@ -16,6 +16,9 @@
         </li>
         <li class="nav-item-right" routerLinkActive="active">
           <a class="nav-link" routerLink="/history">Placed Orders</a>
+        </li>
+        <li class="nav-item-right" routerLinkActive="active">
+          <a class="nav-link" (click)="logout()">Logout</a>
         </li>
       </ul>
     </div>

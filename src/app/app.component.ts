@@ -1,5 +1,6 @@
 import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-root',
@@ -9,12 +10,18 @@ import { Component } from '@angular/core';
 export class AppComponent {
   title = 'ecommui';
   user = '';
-  constructor(private http: HttpClient) {
-    localStorage.setItem(
-      'token',
-      'Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VySWQiOjQsInVzZXJOYW1lIjoiRHdhaXBheWFuIiwiaWF0IjoxNjc4OTY0ODg1LCJleHAiOjE2Nzk4Mjg4ODV9.9EI1Nz5dG5s238RZbiTdCrek7X5PRNp6aHBv6X_21EE'
-    );
-    localStorage.setItem('user', 'Dwaipayan Vidyanta');
-    this.user = localStorage.getItem('user') ?? '';
+  constructor(private http: HttpClient, private router: Router) {
+    const timerId = setInterval(() => {
+      if (!!this.user) clearInterval(timerId);
+      this.user = localStorage.getItem('user') ?? '';
+    }, 2000);
+  }
+
+  ngOnChanges() {}
+
+  logout() {
+    localStorage.clear();
+    this.user = '';
+    this.router.navigate(['/login']);
   }
 }

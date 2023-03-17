@@ -1,0 +1,13 @@
+<div class="container" style="height: 100%">
+    <div class="row align-items-center" style="height: 100%;">
+        <div class="offset-sm-3 col-12 col-sm-6 card bg-danger px-5 py-2">
+            <h5 class="text-center mb-3" style="color: antiquewhite;">Create an account</h5>
+            <input type="text" class="form-control mb-3" placeholder="Name..." [(ngModel)]="name">
+            <input type="email" class="form-control mb-3" placeholder="email@xyz" [(ngModel)]="email">
+            <input type="password" class="form-control mb-3" placeholder="Password..." [(ngModel)]="password">
+            <div class="text-center">
+                <div class="btn btn-warning" (click)="onSubmit()">Register</div>
+            </div>
+        </div>
+    </div>
+</div>
