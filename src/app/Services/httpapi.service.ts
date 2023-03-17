@@ -23,9 +23,11 @@ export class HttpapiService {
     let errorMessage = 'Unknown error!';
     if (error.error instanceof ErrorEvent) {
       // Client-side errors
+      console.log('client side error');
       errorMessage = `Error: ${error.error.message}`;
     } else {
       // Server-side errors
+      console.log('server side error');
       errorMessage = `Error Code: ${error.status}\nMessage: ${error.message}`;
     }
     window.alert(errorMessage);
@@ -57,6 +59,22 @@ export class HttpapiService {
     return this.http
       .post(url, body, {
         headers: header,
+      })
+      .pipe(catchError(this.handleError));
+  }
+
+  public postDataWithTextResponse(url: string, body: any, isAuth: boolean) {
+    let header = undefined;
+    let token = localStorage.getItem('token');
+    if (isAuth === true) {
+      header = {
+        Authorization: !token ? '' : token,
+      };
+    }
+    return this.http
+      .post(url, body, {
+        headers: header,
+        responseType: 'text',
       })
       .pipe(catchError(this.handleError));
   }

@@ -44,7 +44,7 @@ export class HomeComponent {
         if (!!cart) {
           let items: any[] = cart.items;
           for (let i = 0; i < items.length; i++) {
-            let product: any = items[i];
+            let product: any = items[i].product;
             let productId: string = product.id.toString();
             if (!this.orderedProducts.hasOwnProperty(productId)) {
               this.orderedProducts[productId] = 1;

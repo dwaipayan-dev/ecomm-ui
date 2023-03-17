@@ -1,0 +1,20 @@
+<div class="mx-2">
+    <div class="card">
+        <img [src]="product.photoUrl" alt="" class="card-img-top">
+        <div class="card-body">
+            <h6 class="card-title title-box">{{product.title}}</h6>
+            <div class="description-box">
+                <p class="card-text">{{product.description}}</p>
+            </div>
+        </div>
+
+        <div class="card-footer text-center">
+            <div class="btn btn-warning" *ngIf="productMap[product.id] === undefined && quantity === 0"
+                (click)="onBuy()">Buy</div>
+
+            <div class="btn btn-warning" *ngIf="productMap[product.id] !== undefined || quantity > 0" (click)="onBuy()">
+                Add
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,1 +1,6 @@
-<p>home works!</p>
+<div class="container mt-5">
+    <div class="row">
+        <app-product class="col-6 col-sm-6 col-md-4 col-lg-2" *ngFor="let product of products" [product]="product"
+            [productMap]="orderedProducts"></app-product>
+    </div>
+</div>
