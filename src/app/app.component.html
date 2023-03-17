@@ -1,2 +1,25 @@
+<nav class="navbar navbar-expand-lg navbar-dark bg-danger">
+  <div class="container-fluid">
+    <p class="navbar-brand mt-3">Hello {{ this.user }}, </p>
+    <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarSupportedContent"
+      aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+      <span class="navbar-toggler-icon"></span>
+    </button>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <ul class="navbar-nav me-auto">
+        <li class="nav-item-right" routerLinkActive="active">
+          <a class="nav-link" routerLink="/home">Home</a>
+        </li>
+        <li class="nav-item-right" routerLinkActive="active">
+          <a class="nav-link" routerLink="/cart">Cart</a>
+        </li>
+        <li class="nav-item-right" routerLinkActive="active">
+          <a class="nav-link" routerLink="/history">Placed Orders</a>
+        </li>
+      </ul>
+    </div>
+  </div>
+
+</nav>
 <router-outlet></router-outlet>
-<p> app works! </p>
