@@ -1,6 +1,6 @@
 # Ecommui
 
-### NOTE: Please setup and start the dev server before running ng serve command. Angular cli is required for running the project as I haven't created the project build as it was out of scope.
+### NOTE: Please setup and start the local server before running ng serve command. Angular cli is required for running the project as I haven't created the project build as it was out of scope. Api url is referenced in environment.ts, if using server on another machine, use the ip adress of that system instead of localhost.
 
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
