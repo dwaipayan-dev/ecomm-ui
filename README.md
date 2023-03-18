@@ -1,5 +1,7 @@
 # Ecommui
 
+### NOTE: Please setup and start the dev server before running ng serve command. Angular cli is required for running the project as I haven't created the project build as it was out of scope.
+
 This project was generated with [Angular CLI](https://github.com/angular/angular-cli) version 15.2.4.
 
 ## Development server
