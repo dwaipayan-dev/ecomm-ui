@@ -2,6 +2,7 @@ import { HttpClient } from '@angular/common/http';
 import { Component } from '@angular/core';
 import { catchError, throwError } from 'rxjs';
 import { HttpapiService } from 'src/app/Services/httpapi.service';
+import { environment } from 'src/environments/environment.development';
 
 @Component({
   selector: 'app-home',
@@ -11,6 +12,8 @@ import { HttpapiService } from 'src/app/Services/httpapi.service';
 export class HomeComponent {
   totalProducts: number = 0;
   currentPage: number = 1;
+  perPage: number = environment.perPage;
+  totalPages: number = 0;
   products: any[] = [];
   orderedProducts: any = {};
   orderId: number | undefined = undefined;
@@ -19,6 +22,10 @@ export class HomeComponent {
       .getData(api.joinPaths(['product', 'find', 'total']), true)
       .subscribe((data) => {
         this.totalProducts = (data as any).count;
+        this.totalPages = Math.floor(this.totalProducts / this.perPage);
+        if (this.totalProducts % this.perPage > 0) {
+          this.totalPages += 1;
+        }
       });
 
     api
@@ -59,5 +66,31 @@ export class HomeComponent {
 
   ngOnInit() {
     console.log(this.products);
+  }
+
+  onNext() {
+    this.currentPage += 1;
+    this.api
+      .getData(
+        this.api.joinPaths(['product', 'get', `${this.currentPage}`]),
+        true
+      )
+      .subscribe((data) => {
+        this.products = (data as any).page;
+        console.log(this.products);
+      });
+  }
+
+  onPrev() {
+    this.currentPage -= 1;
+    this.api
+      .getData(
+        this.api.joinPaths(['product', 'get', `${this.currentPage}`]),
+        true
+      )
+      .subscribe((data) => {
+        this.products = (data as any).page;
+        console.log(this.products);
+      });
   }
 }

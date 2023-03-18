@@ -22,7 +22,7 @@ export class OpenGuard implements CanActivate {
     | boolean
     | UrlTree {
     return new Promise((resolve, reject) => {
-      if (!!localStorage.getItem('token')) {
+      if (!localStorage.getItem('token')) {
         resolve(true);
       } else {
         this.router.navigate(['/home']);
