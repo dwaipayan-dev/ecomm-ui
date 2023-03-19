@@ -11,10 +11,19 @@ export class AppComponent {
   title = 'ecommui';
   user = '';
   constructor(private http: HttpClient, private router: Router) {
+    console.log('app component loaded');
     const timerId = setInterval(() => {
-      if (!!this.user) clearInterval(timerId);
+      //console.log('Timer started');
+      // if (!!this.user) {
+      //   clearInterval(timerId);
+      //   console.log('Timer cleared');
+      // }
       this.user = localStorage.getItem('user') ?? '';
     }, 2000);
+  }
+
+  ngAfterView() {
+    console.log(this.user);
   }
 
   ngOnChanges() {}
